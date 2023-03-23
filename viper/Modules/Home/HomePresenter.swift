@@ -33,10 +33,26 @@ extension HomePresenter: HomeViewOutputProtocol {
     func goToNextViewController() {
         router?.goToNextViewController()
     }
+    
+    func getFormatCardNumber() {
+        interactor?.getFormatCardNumber()
+    }
+    
+    func getMaskedCardNumber() {
+        interactor?.getMaskedCardNumber()
+    }
 }
 
 extension HomePresenter: HomeInteractorOutputProtocol {
     func presentView(model: Model) {
         view?.loadView(from: model)
+    }
+    
+    func setFormatCardNumber(_ cardNumber: String) {
+        view?.setFormatCardNumber(cardNumber)
+    }
+    
+    func setMaskedCardNumber(_ cardNumber: String) {
+        view?.setMaskedCardNumber(cardNumber)
     }
 }

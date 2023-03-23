@@ -11,5 +11,12 @@ import UIKit
 struct Model {
     let title: String
     let description: String
-    let systemName: String
+    let card: Card
+}
+
+struct Card {
+    let title: String
+    let cardNumber: String
+    let expirationDate: String
+    let cvv: String
 }

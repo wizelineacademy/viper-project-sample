@@ -22,7 +22,7 @@ class SearchViewController: UIViewController {
     // MARK: Functions
     private func setupView() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .systemGray6
     }
 }
 
