@@ -26,19 +26,91 @@ final class viperTests: XCTestCase {
     }
     
     func testHomeModelHasExpected() {
-        // TODO: testHomeModelHasExpected
+        // Given
+        let card = Card(title: "", cardNumber: "", expirationDate: "", cvv: "")
+        let resultExpected = Model(title: "Home", description: "", card: card)
+        
+        // When
+        interactor?.fetchModel()
+        
+        // Then
+        XCTAssertEqual(presenter?.model?.title, resultExpected.title)
+    }
+    
+    func testFormatCardNumberHasExpected() {
+        // Given
+        let resultExpected = "1234 5678 9876 5432"
+        
+        // When
+        interactor?.fetchModel()
+        interactor?.getFormatCardNumber()
+        
+        // Then
+        XCTAssertEqual(presenter?.formatCardNumber, resultExpected)
+    }
+    
+    func testFormatCardNumberHasNotExpected() {
+        // When
+        interactor?.getFormatCardNumber()
+        
+        // Then
+        XCTAssertNil(presenter?.formatCardNumber)
+    }
+    
+    func testMaskedCardNumberHasExpected() {
+        // Given
+        let resultExpected = "**** **** **** 5432"
+        
+        // When
+        interactor?.fetchModel()
+        interactor?.getMaskedCardNumber()
+        
+        // Then
+        XCTAssertEqual(presenter?.maskedCardNumber, resultExpected)
+    }
+    
+    func testMaskedCardNumberHasNotExpected() {
+        // When
+        interactor?.getMaskedCardNumber()
+        
+        // Then
+        XCTAssertNil(presenter?.maskedCardNumber)
+    }
+    
+    func testToggleFunctionExpected() {
+        // Given
+        let resultExpected = true
+        
+        // When
+        interactor?.toggleFunction()
+        
+        // Then
+        XCTAssertEqual(interactor?.isMaskedCardNumber, resultExpected)
+    }
+    func testToggleFunctionExpected2() {
+        // Given
+        let resultExpected = false
+        
+        // When
+        interactor?.toggleFunction()
+        interactor?.toggleFunction()
+        
+        // Then
+        XCTAssertEqual(interactor?.isMaskedCardNumber, resultExpected)
     }
 }
 
 class MockPresenter: HomeInteractorOutputProtocol {
     var model: Model?
+    var formatCardNumber: String?
+    var maskedCardNumber: String?
 
     func setFormatCardNumber(_ cardNumber: String) {
-        // TODO: setFormatCardNumber
+        self.formatCardNumber = cardNumber
     }
     
     func setMaskedCardNumber(_ cardNumber: String) {
-        // TODO: setMaskedCardNumber
+        self.maskedCardNumber = cardNumber
     }
     
     func presentView(model: Model) {

@@ -43,7 +43,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        // TODO: Load info
+        presenter?.fetchModel()
+        presenter?.toggleFunction()
     }
     
     // MARK: Functions
@@ -72,7 +73,7 @@ class HomeViewController: UIViewController {
     
     @objc
     func onButtonClicked() {
-        // TODO: Toggle function
+        presenter?.toggleFunction()
     }
 }
 

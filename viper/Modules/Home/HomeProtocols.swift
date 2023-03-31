@@ -23,6 +23,7 @@ protocol HomeInteractorInputProtocol {
     func fetchModel()
     func getFormatCardNumber()
     func getMaskedCardNumber()
+    func toggleFunction()
 }
 
 // MARK: - Presenter
@@ -35,6 +36,7 @@ protocol HomeViewOutputProtocol {
     func goToNextViewController()
     func getFormatCardNumber()
     func getMaskedCardNumber()
+    func toggleFunction()
 }
 
 protocol HomeInteractorOutputProtocol: AnyObject {

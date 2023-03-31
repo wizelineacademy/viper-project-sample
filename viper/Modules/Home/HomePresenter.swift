@@ -34,6 +34,10 @@ extension HomePresenter: HomeViewOutputProtocol {
         router?.goToNextViewController()
     }
     
+    func toggleFunction() {
+        interactor?.toggleFunction()
+    }
+    
     func getFormatCardNumber() {
         interactor?.getFormatCardNumber()
     }
